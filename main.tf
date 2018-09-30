@@ -77,9 +77,9 @@ resource "aws_security_group" "admin" {
 }
  
 resource "aws_instance" "cm-test" {
-    ami = "${var.images.ap-northeast-1}"
+    ami = "${lookup(var.images,"ap-northeast-1")}"
     instance_type = "t2.micro"
-    key_name = "cm-yawata.yutaka"
+    key_name = "tamura"
     vpc_security_group_ids = [
       "${aws_security_group.admin.id}"
     ]
